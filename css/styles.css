@@ -1,0 +1,282 @@
+/* CSS Huck */
+* { 
+  vertical-align: baseline; 
+  font-weight: inherit; 
+  font-family: inherit; 
+  font-style: inherit; 
+  font-size: 100%; 
+  border: 0 none; 
+  outline: 0; 
+  padding: 0; 
+  margin: 0; 
+}
+
+html,
+body {
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
+}
+
+html { 
+    font-size: 1em; 
+}
+
+body { 
+    font-size: 100%; 
+} 
+
+p {
+	margin:0;
+	padding:0;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+}
+
+ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0;
+	-webkit-margin-start: 0em;
+	-webkit-margin-end: 0em;
+	-webkit-padding-start: 0em;
+}
+
+li {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+a img,
+:link img,
+:visited img { 
+    border: 0; 
+}
+
+input {
+	border:none;
+	outline:none;
+}
+
+img {
+	border:none;
+	outline:none;
+}
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+img,
+div {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(…); 
+}
+
+img {
+    -ms-interpolation-mode: bicubic;
+}
+
+html {
+    overflow: auto;
+}
+
+/* End CSS Huck */
+
+/* Main CSS */
+body {
+    font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+    background: #efefef;
+}
+
+h1,
+h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+input,
+p,
+a {
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+label {
+    font-weight: normal !important;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 1.2em;
+}
+
+ul {
+    margin: 0.5em 0em;
+}
+
+hr {
+    border-width: 0.3em;
+    border-color: #231f20;
+    margin-left:auto;
+    margin-right: auto;
+    max-width: 50px;
+}
+
+hr.underline {
+    border-width: 0.3em;
+    border-color: #231f20;
+    text-align: left;
+    margin-left: 0 !important;
+    margin: 1.9em;
+}
+
+a {
+    color: #231f20;
+    font-size: 0.875em;
+    transition: all 0.35s;
+}
+
+a:hover, a:focus {
+    color: #594f51;
+}
+
+.btn {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  border: none;
+  border-radius: 18.75em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  color: white;
+  background-color: #231f20;
+  border-color: #231f20;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+  outline: 0;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active {
+  color: white;
+  background-color: rgb(64, 64, 64);
+  border-color: rgb(57, 57, 57);
+}
+
+#section-header h1 {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700 !important;
+}
+
+#section-header h2 {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600 !important;
+}
+
+.section-heading {
+  margin-top: 0;
+}
+
+#overlay-top {
+  position: absolute;
+  margin-top: -175px;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+section > .row {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+#section-audience > div {
+    padding-right: 20px;
+}
+
+.service-box p {
+    margin-bottom: 0;
+    text-align: justify;
+}
+
+.block {
+    background: #e0e0e0;
+}
+
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.col-xs-5 {
+    width: 27.777777777777%;
+    float: left;
+}
+
+.form-control:focus {
+    border-color: rgb(180, 180, 180);
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(149, 149, 149, 0.6);
+}
+
+@media (min-width: 1200px) {
+    .col-lg-5 {
+        width: 27.777777777777%;
+        float: left;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-5 {
+        width: 27.777777777777%;
+        float: left;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-sm-5 {
+        width: 27.777777777777%;
+        float: left;
+    }
+}

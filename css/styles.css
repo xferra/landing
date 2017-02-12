@@ -141,6 +141,17 @@ p {
     margin-bottom: 1.2em;
 }
 
+::-moz-selection {
+    color: white;
+    text-shadow: none;
+    background: #222;
+}
+::selection {
+    color: white;
+    text-shadow: none;
+    background: #222;
+}
+
 ul {
     margin: 0.5em 0em;
 }
@@ -164,11 +175,26 @@ hr.underline {
 a {
     color: #231f20;
     font-size: 0.875em;
+    -webkit-transition: all 0.35s;
     transition: all 0.35s;
 }
 
 a:hover, a:focus {
-    color: #594f51;
+   color: #594f51;
+}
+
+.coming-soon {
+   opacity: 0.7 !important; 
+}
+
+.logo {
+   width: 200px;
+   height: auto;
+}
+
+.logo-link {
+   position: relative;
+   z-index: 99;
 }
 
 .btn {
@@ -182,21 +208,29 @@ a:hover, a:focus {
 .btn-primary {
   color: white;
   background-color: #231f20;
-  border-color: #231f20;
   -webkit-transition: all 0.35s;
   transition: all 0.35s;
-  outline: 0;
+  border-color: inherit;
+  outline-color: inherit;
+  border: 0 !important;
+  outline: 0 !important;
 }
 
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.focus,
 .btn-primary:active,
-.btn-primary.active {
+.btn-primary.active,
+.btn-primary:active:focus,
+.btn-primary.active.focus{
   color: white;
   background-color: rgb(64, 64, 64);
-  border-color: rgb(57, 57, 57);
+  border-color: inherit;
+  outline-color: inherit;
+  border: 0 !important;
+  outline: 0 !important;
 }
+
 
 #section-header h1 {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -227,7 +261,8 @@ section > .row {
 }
 
 #section-audience > div {
-    padding-right: 20px;
+    padding-right: 1.2em;
+    padding-left: 1.2em;
 }
 
 .service-box p {
@@ -275,8 +310,35 @@ section > .row {
 }
 
 @media (min-width: 768px) {
+    #page-top {
+      background: url('../images/header.jpg') no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
     .col-sm-5 {
         width: 27.777777777777%;
         float: left;
+    }
+}
+
+@media (max-width: 768px) {
+   #section-audience .service-box {
+        padding-top: 2em;
+    }
+    hr.underline {
+        margin: 1em;
+    }
+    section > .row {
+        padding-top: 0px;
+    }
+    #section-hello h1 {
+        font-size: 1.875em;
+    }
+    #section-hello h2 {
+        font-size: 1.5em;
+    }
+    #section-hello div, 
+    #section-hello button {
+        font-size: 0.875em;
     }
 }

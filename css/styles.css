@@ -108,7 +108,7 @@ html {
 
 /* Main CSS */
 body {
-    font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
     background: #efefef;
 }
 
@@ -330,6 +330,10 @@ section > .row {
     }
     section > .row {
         padding-top: 0px;
+    }
+    #section-hello span {
+        display: block;
+        margin-top: 5px;
     }
     #section-hello h1 {
         font-size: 1.875em;

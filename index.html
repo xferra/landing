@@ -52,7 +52,7 @@
                             <h1>Reporting and analytics</h1>
                             <h2>platform for your development process</h2>
                             <hr class="underline">
-                            <div><button class="btn btn-primary">Subscribe</button> <span>and get our tips how to improve your project!</span></div>
+                            <div><button class="btn btn-primary" id="btn-subscribe">Subscribe</button> <span>and get our tips how to improve your project!</span></div>
                         </div>
                     </div>
                </section>
@@ -133,13 +133,24 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Mailchimp -->
+    <script type="text/javascript" src="https://s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script> 
+    <script type="text/javascript">
+        function showMailingPopUp() {
+            require(["mojo/signup-forms/Loader"], function(L) {
+                document.cookie = "MCEvilPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
+                L.start({"baseUrl":"mc.us15.list-manage.com","uuid":"b6cca98086d340193c09d707f","lid":"9258d978d7"}) ;
+            });   
+        }
+        document.getElementById("btn-subscribe").onclick = function() { showMailingPopUp(); };
+    </script>
+
     <!-- Google Analytics -->
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
         ga('create', 'UA-91756495-1', 'auto');
         ga('send', 'pageview');
     </script>

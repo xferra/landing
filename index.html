@@ -48,9 +48,40 @@
                         </div>
                         <div class="col-lg-7 col-lg-offset-0 col-md-7 col-md-offset-0 col-sm-offset-2 col-xs-offset-0">
                             <h1>Reporting and analytics</h1>
-                            <h2>platform for your development process</h2>
+                            <h3>platform for your development process</h3>
                             <hr class="underline">
-                            <div><button class="btn btn-primary" id="btn-subscribe">Subscribe</button> <span>and get our tips how to improve your project!</span></div>
+                            <form 
+                               action="http://repometric.us15.list-manage.com/subscribe/post?u=b6cca98086d340193c09d707f&amp;id=9258d978d7" method="post" 
+                               id="form" 
+                               class="validate" 
+                               target="_blank" 
+                               novalidate>
+
+                                <div class="input-group form" id="formSection">
+                                <div id="mce-responses">
+                                    <div class="response display-none" id="error-response"></div>
+                                    <div class="response display-none" id="success-response" ></div>
+                                </div> 
+                                    <div class="mc-field-group">    
+                                        <input  id="email" 
+                                                name="EMAIL" 
+                                                class="btn btn-primary required email" 
+                                                placeholder="Subscribe" 
+                                                value=""  
+                                                type="email" 
+                                                pattern="[A-Za-z]{2,}" 
+                                            />
+                                            <button type="submit" name="subscribe" id="subscribe" class="button">
+                                                <i id="enter" class="fa fa-envelope-o fa-fw"></i>
+                                                <i id="loading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" style="display: none;"></i>
+                                        </button>
+                                    </div>
+                                    <div aria-hidden="true" class="hide-el">
+                                        <input id="subscribeKey" type="text" name="b_b6cca98086d340193c09d707f_9258d978d7" tabindex="-1" value="">
+                                    </div>
+                                </div>
+                            </form>
+                            <p>and get our tips how to improve your project!</p>   
                         </div>
                     </div>
                </section>
@@ -115,7 +146,7 @@
     </footer>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'  type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 
     <!-- Styles -->
@@ -130,16 +161,93 @@
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Mailchimp -->
-    <script type="text/javascript" src="https://s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+    <!-- Logic -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
     <script type="text/javascript">
-        function showMailingPopUp() {
-            require(["mojo/signup-forms/Loader"], function(L) {
-                document.cookie = "MCEvilPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
-                L.start({"baseUrl":"mc.us15.list-manage.com","uuid":"b6cca98086d340193c09d707f","lid":"9258d978d7"}) ;
-            });   
-        }
-        document.getElementById("btn-subscribe").onclick = function() { showMailingPopUp(); };
+        (function() {  
+            var $dom = {
+                email: $("#email"),
+                subscribe: $("#subscribe"),
+                send: $("#enter"),
+                form: $("#form"),
+                key: $("#subscribeKey")
+            };
+            var landing = {
+                expand: function () {
+                    $dom.email.attr("placeholder", "Enter your email...");
+                    return landing;
+                },
+                collapse: function () {
+                    $dom.email.attr("placeholder", "Subscribe");
+                    $dom.email.val("");
+                    return landing;
+                },
+                focus: function () {
+                    $dom.email.focus();
+                    return landing;
+                },
+                hideStatus: function () {
+                    $dom.email.removeClass("subscibedErr");
+                    $("#error-response").html("").hide();
+                    $("#success-response").html("").hide();
+                    return landing;
+                },
+                toggle: function () {
+                    $("#enter, #loading").toggle();
+                    return landing;
+                },
+                reset: function () {
+                    landing.collapse().hideStatus();
+                },
+                request: function (sucess, error) {
+                    var url = $dom.form.attr("action").replace("/post?u=", "/post-json?u=") + "&c=?";
+                    var data = $dom.email.attr("name") + "=" + $dom.email.val() + "&" + $dom.key.attr("name") +"="; 
+                    var request = {
+                        url: url,
+                        type: "GET",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data: data,
+                        success: sucess,
+                        error: error
+                    };
+                    $.ajax(request);
+                },
+                subscribe: function (element) {
+                    element.preventDefault();
+                    $dom.email.prop("readonly", true);
+                    landing.toggle().hideStatus().request(function (data) {
+                        var message;
+                        var div;
+                        landing.toggle();
+                        if (data.result == "success") {
+                            $dom.email.unbind("click");
+                            $dom.email.blur();  
+                            $dom.email.unbind("blur");
+                            $dom.email.addClass("subscibed");
+                            $dom.email.removeClass("required");
+                            $dom.email.val("Subscribed");
+                            div = $("#success-response");
+                            message = data.msg;
+                        } else {
+                            $dom.email.addClass("subscibedErr");
+                            $dom.email.prop("readonly", false);
+                            div = $("#error-response");
+                            message = "Error: " + data.msg.replace("0 - ", "");
+                        }
+                        div.html(message).show();
+                        $("#mce-responses").css("opacity", "1");
+                    });
+                }
+            };
+    
+            $dom.email.bind("click", landing.expand.bind(this));
+            $dom.email.bind("input", landing.hideStatus.bind(this));
+            $dom.email.bind("blur", landing.reset.bind(this));
+            $dom.send.bind("click", landing.focus.bind(this));
+            $dom.subscribe.bind("click", landing.subscribe.bind(this));
+            $("body").bind("click", landing.hideStatus.bind(this));
+        })();
     </script>
    
     <!-- Google Analytics -->

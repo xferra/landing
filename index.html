@@ -73,7 +73,7 @@
                                             />
                                             <button type="submit" name="subscribe" id="subscribe" class="button">
                                                 <i id="enter" class="fa fa-envelope-o fa-fw"></i>
-                                                <i id="loading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" style="visibility: hidden;"></i>
+                                                <i id="loading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" style="display: none;"></i>
                                         </button>
                                     </div>
                                     <div aria-hidden="true" class="hide-el">
@@ -173,6 +173,7 @@
                 key: $("#subscribeKey")
             };
             var landing = {
+                value : "",
                 expand: function () {
                     $dom.email.attr("placeholder", "Enter your email...");
                     return landing;
@@ -183,7 +184,11 @@
                     return landing;
                 },
                 focus: function () {
-                    $dom.email.focus();
+                    setTimeout(function(){
+                        $dom.email.focus();
+                        $dom.email.val(landing.value);
+                        $dom.email.attr("placeholder", "Enter your email...");
+                    });
                     return landing;
                 },
                 hideStatus: function (element) {
@@ -196,7 +201,8 @@
                     $("#enter, #loading").toggle();
                     return landing;
                 },
-                reset: function () {
+                reset: function (element) {
+                    landing.value = $dom.email.val();
                     landing.collapse().hideStatus();
                 },
                 request: function (sucess, error) {
@@ -229,6 +235,7 @@
                             $dom.email.val("Subscribed");
                             div = $("#success-response");
                             message = data.msg;
+                            $("body").bind("click", landing.hideStatus.bind(this));
                         } else {
                             $dom.email.addClass("subscibedErr");
                             $dom.email.prop("readonly", false);
@@ -244,9 +251,8 @@
             $dom.email.bind("click", landing.expand.bind(this));
             $dom.email.bind("input", landing.hideStatus.bind(this));
             $dom.email.bind("blur", landing.reset.bind(this));
-            $dom.send.bind("click", landing.focus.bind(this));
+            $dom.send.bind("mousedown", landing.focus.bind(this));
             $dom.subscribe.bind("click", landing.subscribe.bind(this));
-            $("body").bind("click", landing.hideStatus.bind(this));
         })();
     </script>
    

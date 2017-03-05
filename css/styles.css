@@ -340,9 +340,6 @@ input[type=email]:focus {
     visibility: hidden;
     background:none;
     color:black;
-    -webkit-transition: all 0.35s;
-    -o-transition: all 0.35s;
-    transition: all 0.35s;
 }
 
 input[type=email]:active.required + #subscribe,
@@ -465,20 +462,20 @@ input[type=email]:-moz-placeholder {
 }
 
 input[type=email]:focus::-webkit-input-placeholder { 
-  color: gray !important;
+  color: rgba(255,255,255,.4) !important;
 }
 
 input[type=email]:focus:-ms-input-placeholder {
-  color: gray !important;
+  color: rgba(255,255,255,.4) !important;
 }
 
 input[type=email]:focus::-moz-placeholder { 
-  color: gray !important;
+  color: rgba(255,255,255,.4) !important;
   opacity: 1;
 }
 
 input[type=email]:focus:-moz-placeholder { 
-  color: gray !important;
+  color: rgba(255,255,255,.4) !important;
   opacity: 1;
 }
 
@@ -489,6 +486,10 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 300s ease-in-out 0s;
+    animation: chColor 0s both;
+}
+@keyframes chColor {
+    100% {color:white}
 }
 
 /* Media queries */

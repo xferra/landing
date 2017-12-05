@@ -9,7 +9,7 @@ install:
   - yarn install
 script:
   - polymer build
-  - cd build/es6-unbundled
+  - cd build/es5-bundled
 deploy:
   provider: pages
   skip_cleanup: true

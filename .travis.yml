@@ -9,7 +9,7 @@ install:
   - yarn install
 script:
   - polymer build
-  - ls build/es5-bundled
+  - cd build/es5-bundled
 deploy:
   provider: pages
   skip_cleanup: true
@@ -17,6 +17,5 @@ deploy:
   on:
     branch: master
     target_branch: gh-pages
-    local_dir: build/es5-bundled
     fqdn: repometric.com
   

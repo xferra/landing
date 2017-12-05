@@ -10,6 +10,7 @@ install:
   - ls build/es5-bundled
 script:
   - polymer build
+  - ls build/es5-bundled
 deploy:
   provider: pages
   skip_cleanup: true

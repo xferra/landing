@@ -10,6 +10,7 @@
   "extraDependencies": [
     "CNAME",
     "robots.txt",
+    "sitemap.xml",
     ".nojekyll",
     "manifest.json",
     "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",

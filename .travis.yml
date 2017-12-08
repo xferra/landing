@@ -1,5 +1,7 @@
 language: node_js
 node_js: stable
+script:
+  echo landing
 deploy:
   provider: pages
   skip_cleanup: true
